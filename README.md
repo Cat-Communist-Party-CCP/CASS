@@ -29,10 +29,10 @@ CASS is an **open-source AI-powered SQL assistant** that lets you query database
 ```
 You: "Who are our top 5 customers by revenue this month?"
 
-CASS: 
+CASS:
   📝 Generated SQL: SELECT customer_name, SUM(amount) FROM orders...
   📊 Results: [Interactive Table]
-  📈 Chart: [Bar Chart Visualization]  
+  📈 Chart: [Bar Chart Visualization]
   💬 Answer: "Your top customer is Acme Corp with $45,000..."
 ```
 
@@ -40,15 +40,15 @@ CASS:
 
 ## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| 🗣️ **Natural Language** | Ask questions in plain English |
-| 🦙 **100% Local & Free** | Runs on Ollama – no API costs, complete privacy |
-| ⚡ **Real-time Streaming** | See responses as they generate |
-| 📊 **Rich Visualizations** | Auto-generated tables and charts |
-| 🎨 **Modern UI** | Beautiful, responsive chat interface |
-| 🐘 **PostgreSQL** | Production-ready database support |
-| 🔄 **Smart Fallback** | Automatic model switching for reliability |
+| Feature                    | Description                                     |
+| -------------------------- | ----------------------------------------------- |
+| 🗣️ **Natural Language**    | Ask questions in plain English                  |
+| 🦙 **100% Local & Free**   | Runs on Ollama – no API costs, complete privacy |
+| ⚡ **Real-time Streaming** | See responses as they generate                  |
+| 📊 **Rich Visualizations** | Auto-generated tables and charts                |
+| 🎨 **Modern UI**           | Beautiful, responsive chat interface            |
+| 🐘 **PostgreSQL**          | Production-ready database support               |
+| 🔄 **Smart Fallback**      | Automatic model switching for reliability       |
 
 ---
 
@@ -126,36 +126,36 @@ npm run dev
 
 Try asking CASS:
 
-| Query | What it does |
-|-------|--------------|
-| *"Show me all orders from last week"* | Filters by date range |
-| *"What's the average order value by city?"* | Aggregation with grouping |
-| *"List products with less than 10 in stock"* | Conditional filtering |
-| *"Who are our most active customers?"* | Ranking and sorting |
-| *"Compare monthly revenue for 2024"* | Time-series analysis |
+| Query                                        | What it does              |
+| -------------------------------------------- | ------------------------- |
+| _"Show me all orders from last week"_        | Filters by date range     |
+| _"What's the average order value by city?"_  | Aggregation with grouping |
+| _"List products with less than 10 in stock"_ | Conditional filtering     |
+| _"Who are our most active customers?"_       | Ranking and sorting       |
+| _"Compare monthly revenue for 2024"_         | Time-series analysis      |
 
 ---
 
 ## 🏗️ Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| **AI Model** | [Ollama](https://ollama.ai) + sqlcoder:7b |
-| **Backend** | Python 3.10+, FastAPI, SSE Streaming |
-| **Frontend** | HTML/CSS/JS, Tailwind CSS |
-| **Database** | PostgreSQL 14+ |
-| **Deployment** | Vercel (frontend), Railway (backend) |
+| Layer          | Technology                                |
+| -------------- | ----------------------------------------- |
+| **AI Model**   | [Ollama](https://ollama.ai) + sqlcoder:7b |
+| **Backend**    | Python 3.10+, FastAPI, SSE Streaming      |
+| **Frontend**   | HTML/CSS/JS, Tailwind CSS                 |
+| **Database**   | PostgreSQL 14+                            |
+| **Deployment** | Vercel (frontend), Railway (backend)      |
 
 ---
 
 ## 📖 Documentation
 
-| Document | Description |
-|----------|-------------|
-| [Getting Started](docs/GETTING_STARTED.md) | Full installation guide |
-| [API Reference](docs/API.md) | Backend API documentation |
-| [Architecture](docs/ARCHITECTURE.md) | System design overview |
-| [Contributing](CONTRIBUTING.md) | How to contribute |
+| Document                                   | Description               |
+| ------------------------------------------ | ------------------------- |
+| [Getting Started](docs/GETTING_STARTED.md) | Full installation guide   |
+| [API Reference](docs/API.md)               | Backend API documentation |
+| [Architecture](docs/ARCHITECTURE.md)       | System design overview    |
+| [Contributing](CONTRIBUTING.md)            | How to contribute         |
 
 ---
 
