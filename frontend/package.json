@@ -1,0 +1,25 @@
+{
+  "name": "cass-frontend",
+  "version": "1.0.0",
+  "description": "CASS - Conversational AI SQL System Frontend",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js,jsx",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\""
+  },
+  "dependencies": {
+    "chart.js": "^4.4.1",
+    "highlight.js": "^11.9.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.12",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.33",
+    "autoprefixer": "^10.4.17",
+    "prettier": "^3.2.4",
+    "eslint": "^8.56.0"
+  }
+}

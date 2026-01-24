@@ -1,0 +1,96 @@
+version: '3.8'
+
+# =============================================================================
+# CASS Development Docker Compose
+# =============================================================================
+# Run: docker-compose up -d
+# Stop: docker-compose down
+
+services:
+  # ---------------------------------------------------------------------------
+  # PostgreSQL Database
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:14-alpine
+    container_name: cass-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cassdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: casspass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./database/seeds/sample_data.sql:/docker-entrypoint-initdb.d/02-sample_data.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ---------------------------------------------------------------------------
+  # Adminer - Database Management UI (Optional)
+  # ---------------------------------------------------------------------------
+  adminer:
+    image: adminer:latest
+    container_name: cass-adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+  # ---------------------------------------------------------------------------
+  # Backend API (uncomment when Dockerfile is ready)
+  # ---------------------------------------------------------------------------
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   container_name: cass-backend
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - POSTGRES_HOST=postgres
+  #     - POSTGRES_PORT=5432
+  #     - POSTGRES_DB=cassdb
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=casspass
+  #     - OLLAMA_BASE_URL=http://host.docker.internal:11434
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   volumes:
+  #     - ./backend/src:/app/src
+
+volumes:
+  postgres_data:
+
+    # =============================================================================
+    # Usage Instructions:
+    # =============================================================================
+    #
+    # 1. Start all services:
+    #    docker-compose up -d
+    #
+    # 2. Check status:
+    #    docker-compose ps
+    #
+    # 3. View logs:
+    #    docker-compose logs -f postgres
+    #
+    # 4. Access database:
+    #    - Adminer UI: http://localhost:8080
+    #    - Connection: postgres / postgres / casspass / cassdb
+    #
+    # 5. Stop all services:
+    #    docker-compose down
+    #
+    # 6. Reset database (delete data):
+    #    docker-compose down -v
+    #
+    # =============================================================================
