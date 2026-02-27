@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CASS - Conversational AI SQL System</title>
+  <meta name="description" content="Ask questions about your data in natural language">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/src/styles/globals.css">
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <!-- App Container -->
+  <div id="app" class="flex flex-col h-screen">
+    
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+      <div class="flex items-center justify-between max-w-6xl mx-auto">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <span class="text-xl font-bold">C</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold">CASS</h1>
+            <p class="text-xs text-gray-400">Conversational AI SQL System</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span id="status-indicator" class="flex items-center gap-2 text-sm">
+            <span class="w-2 h-2 bg-gray-500 rounded-full"></span>
+            <span class="text-gray-400">Connecting...</span>
+          </span>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="flex-1 overflow-hidden">
+      <div class="h-full max-w-6xl mx-auto flex flex-col">
+        
+        <!-- Chat Messages -->
+        <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+          <!-- Welcome message -->
+          <div class="flex justify-center">
+            <div class="bg-gray-800 rounded-xl p-6 max-w-lg text-center">
+              <div class="text-4xl mb-4">🗃️</div>
+              <h2 class="text-lg font-semibold mb-2">Ask me anything about your data</h2>
+              <p class="text-gray-400 text-sm">
+                I'll convert your questions into SQL and show you the results.
+              </p>
+              <div class="mt-4 flex flex-wrap justify-center gap-2">
+                <button class="suggestion-btn px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded-full text-sm transition-colors">
+                  How many customers?
+                </button>
+                <button class="suggestion-btn px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded-full text-sm transition-colors">
+                  Show top 5 products
+                </button>
+                <button class="suggestion-btn px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded-full text-sm transition-colors">
+                  Total orders this month
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Input Area -->
+        <div class="border-t border-gray-700 p-4">
+          <form id="chat-form" class="flex gap-3 max-w-4xl mx-auto">
+            <input 
+              type="text" 
+              id="message-input"
+              placeholder="Ask a question about your data..."
+              class="flex-1 bg-gray-800 border border-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+              autocomplete="off"
+            >
+            <button 
+              type="submit"
+              id="send-btn"
+              class="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed px-6 py-3 rounded-xl font-medium transition-colors flex items-center gap-2"
+            >
+              <span>Send</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+        
+      </div>
+    </main>
+    
+  </div>
+  
+  <!-- Main JS -->
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>
