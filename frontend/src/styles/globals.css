@@ -1,6 +1,5 @@
 /* =============================================================================
- * CASS - Global Styles
- * Using Tailwind CSS
+ * CASS - Global Styles (Chartbrew-like Light Theme)
  * ============================================================================= */
 
 @tailwind base;
@@ -12,11 +11,11 @@
  * ============================================================================= */
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 code, pre, .font-mono {
-  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-family: "JetBrains Mono", "Consolas", monospace;
 }
 
 /* =============================================================================
@@ -24,61 +23,99 @@ code, pre, .font-mono {
  * ============================================================================= */
 
 @layer components {
-  /* Message bubbles */
-  .msg-user {
-    @apply bg-blue-600 text-white rounded-2xl rounded-br-md px-4 py-3 max-w-[80%] ml-auto;
+  /* Sidebar buttons */
+  .sidebar-btn {
+    @apply w-12 h-12 flex items-center justify-center rounded-xl text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors;
   }
   
-  .msg-assistant {
-    @apply bg-gray-700 text-white rounded-2xl rounded-bl-md px-4 py-3 max-w-[80%];
+  .sidebar-btn.active {
+    @apply bg-cyan-50 text-cyan-600;
   }
   
-  /* SQL code block */
-  .sql-block {
-    @apply bg-gray-900 border border-gray-600 rounded-lg p-4 mt-2 overflow-x-auto;
+  /* Tab buttons (Query/Configure) */
+  .tab-btn {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-100 transition-colors;
   }
   
-  .sql-block code {
-    @apply text-sm text-green-400;
+  .tab-btn.active {
+    @apply bg-cyan-500 text-white hover:bg-cyan-600;
+  }
+  
+  /* Mode tabs (SQL Query/Visual Query) */
+  .mode-tab {
+    @apply text-sm font-medium text-gray-400 pb-2 border-b-2 border-transparent hover:text-gray-600 transition-colors;
+  }
+  
+  .mode-tab.active {
+    @apply text-gray-800 border-gray-800;
+  }
+  
+  /* View tabs (Table/JSON) */
+  .view-tab {
+    @apply text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors;
+  }
+  
+  .view-tab.active {
+    @apply text-gray-800;
+  }
+  
+  /* Primary button */
+  .btn-primary {
+    @apply flex items-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-medium rounded-lg transition-colors;
+  }
+  
+  /* Run query button */
+  .btn-run {
+    @apply flex items-center justify-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-medium rounded-xl transition-colors;
+  }
+  
+  /* Status dot */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
   }
   
   /* Data table */
   .data-table {
-    @apply w-full border-collapse mt-3 text-sm;
+    @apply w-full text-sm;
   }
   
   .data-table th {
-    @apply bg-gray-800 text-left px-3 py-2 border-b border-gray-600 font-medium text-gray-300;
+    @apply text-left px-4 py-3 bg-gray-50 text-gray-500 font-medium border-b border-gray-200;
   }
   
   .data-table td {
-    @apply px-3 py-2 border-b border-gray-700 text-gray-200;
+    @apply px-4 py-3 border-b border-gray-100 text-gray-700;
   }
   
   .data-table tr:hover td {
-    @apply bg-gray-800/50;
+    @apply bg-gray-50;
   }
   
-  /* Loading states */
-  .typing-indicator {
-    @apply flex gap-1 items-center px-4 py-3;
+  /* Modal */
+  .modal {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
   }
   
-  .typing-indicator span {
-    @apply w-2 h-2 bg-gray-400 rounded-full animate-bounce;
+  .modal.is-hidden {
+    display: none;
   }
   
-  .typing-indicator span:nth-child(2) {
-    animation-delay: 0.1s;
+  .modal-backdrop {
+    @apply absolute inset-0 bg-black/50;
   }
   
-  .typing-indicator span:nth-child(3) {
-    animation-delay: 0.2s;
+  .modal-content {
+    @apply relative bg-white rounded-xl shadow-xl p-6 max-w-2xl w-full mx-4;
   }
   
-  /* Error state */
-  .error-msg {
-    @apply bg-red-900/50 border border-red-700 text-red-200 rounded-lg px-4 py-3;
+  /* SQL editor line numbers */
+  #line-numbers {
+    min-width: 40px;
+    line-height: 1.5rem;
+  }
+  
+  #sql-input {
+    line-height: 1.5rem;
   }
 }
 
@@ -95,8 +132,17 @@ code, pre, .font-mono {
   animation: fadeIn 0.3s ease-out;
 }
 
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
 /* =============================================================================
- * Scrollbar Styling
+ * Scrollbar Styling (Light theme)
  * ============================================================================= */
 
 ::-webkit-scrollbar {
@@ -105,14 +151,14 @@ code, pre, .font-mono {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: #94a3b8;
 }
